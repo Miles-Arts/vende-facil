@@ -86,14 +86,13 @@ La plataforma maneja distintos tipos de usuarios (clientes y vendedores), así c
 
 2. Crea un entorno virtual con Python 3:
    ```
-   virtualenv -p python3 env
+   python -m virtualenv venv
    ```
 
 3. Activa el entorno virtual:
    - En Windows (Git Bash desde Visual Studio Code):
      ```
      source env/Scripts/activate
-   
      ```
    - En Windows (Command Prompt o PowerShell):
      ```
@@ -126,6 +125,8 @@ Para verificar si el entorno virtual está activo sin intentar activarlo nuevame
    - En Git Bash:
      ```bash
      source env/Scripts/activate
+     o
+     source venv/Scripts/activate
      ```
    - En PowerShell:
      ```powershell
@@ -326,3 +327,4 @@ SOFTWARE.
 ```
 
 ---
+````
