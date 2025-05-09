@@ -17,9 +17,10 @@
 7. [Conexión a la Base de Datos PostgreSQL](#conexión-a-la-base-de-datos-postgresql)
 8. [Solución a Errores Comunes](#solución-a-errores-comunes)
 9. [Metodología de Trabajo](#metodología-de-trabajo)
-10. [Versión del Proyecto](#versión-del-proyecto)
-11. [Autor e Institución](#autor-e-institución)
-12. [Licencia](#licencia)
+10. [Arquitectura del Proyecto](#arquitectura-del-proyecto)
+11. [Versión del Proyecto](#versión-del-proyecto)
+12. [Autor e Institución](#autor-e-institución)
+13. [Licencia](#licencia)
 
 ---
 
@@ -258,6 +259,26 @@ Si encuentras problemas al ejecutar el proyecto, sigue estos pasos para solucion
 ## Metodología de Trabajo
 
 Este proyecto utiliza la metodología **Kanban** para la gestión y organización de tareas. Kanban permite visualizar el flujo de trabajo, identificar cuellos de botella y mejorar la eficiencia del equipo.
+
+---
+
+## Arquitectura del Proyecto
+
+El proyecto utiliza una arquitectura **MVC (Modelo-Vista-Controlador)**, que organiza el código en tres componentes principales:
+
+1. **Modelo (Model):**
+   - Representa la lógica de datos y la interacción con la base de datos.
+   - En este proyecto, el archivo `src/conexion_postgresql.py` y el script `setup_database.sql` manejan la conexión y configuración de la base de datos PostgreSQL.
+
+2. **Vista (View):**
+   - Representa la interfaz de usuario y lo que el usuario ve.
+   - Las vistas están en la carpeta `templates/` con archivos HTML como `index.html`, `contacto.html`, etc.
+
+3. **Controlador (Controller):**
+   - Maneja la lógica de la aplicación, recibe las solicitudes del usuario, interactúa con el modelo y selecciona la vista adecuada.
+   - En este proyecto, el archivo `app.py` actúa como el controlador principal, manejando las rutas y la lógica de la aplicación.
+
+Esta arquitectura permite separar responsabilidades, facilitando el mantenimiento y la escalabilidad del proyecto.
 
 ---
 
