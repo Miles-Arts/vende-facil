@@ -8,7 +8,7 @@ try:
         database='VendeFacil'
     )
     
-    print('Conexión exitosa')
+    print('...Conexión exitosa...')
     cursor=connection.cursor()
     cursor.execute("SELECT version()")
     row=cursor.fetchone()
@@ -19,3 +19,8 @@ try:
         print(row)
 except Exception as ex:
     print((ex))    
+    
+    
+finally:
+    connection.close()  
+    print("...Conexión Finalizada...")  
