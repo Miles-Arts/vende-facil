@@ -11,7 +11,6 @@ CREATE TABLE asignaturas (
     creditos INT
 );
 
-
 -- Insertar los datos
 INSERT INTO asignaturas (codigo, nombre, creditos) VALUES
 (183224, 'Matemática', 6),
