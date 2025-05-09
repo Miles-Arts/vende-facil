@@ -1,5 +1,5 @@
 -- Crear la base de datos
-CREATE DATABASE materias;
+CREATE DATABASE VendeFacil;
 
 -- Usar la base de datos
 USE materias;
