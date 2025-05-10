@@ -7,24 +7,13 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import url_for, redirect
+from flask import jsonify
+#from src.conexion_postgresql import obtener_conexion
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from src.conexion_postgresql import obtener_conexion
 
-
-# Import routes
-#from app import routes
-
-# Crear la conexión a la base de datos
-#conn = psycopg2.connect(
-    #dbname="VendeFacil",
-    #user="root",
-    #password="1234",
-   # host="localhost",
-   # port="5432"
-#)
-
-# Crear un cursor para ejecutar consultas
-#cursor = conn.cursor()
-
-# Crear una instancia de la aplicación Flask
 app=Flask(__name__)
 
 
@@ -81,6 +70,27 @@ def query_string():
     print(request.args.get('param2'))
     # Devuelve una respuesta simple
     return 'ok'
+
+
+
+@app.route('/asignaturas')
+def asignaturas():
+    data = []
+    try:
+        conn = obtener_conexion()
+        cursor = conn.cursor()
+        cursor.execute("SELECT codigo, nombre, creditos FROM asignaturas ORDER BY nombre ASC")
+        rows = cursor.fetchall()
+        # Convertir los resultados a una lista de diccionarios
+        data = [
+            {"codigo": row[0], "nombre": row[1], "creditos": row[2]}
+            for row in rows
+        ]
+        cursor.close()
+        conn.close()
+    except Exception as ex:
+        return jsonify({"error": str(ex)})
+    return jsonify(data)
 
 # Manejo de errores 404 (página no encontrada)
 def pagina_no_encontrada(error):

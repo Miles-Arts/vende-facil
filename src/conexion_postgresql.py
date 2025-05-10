@@ -21,6 +21,20 @@ except Exception as ex:
     print((ex))    
     
     
+    
+    
 finally:
     connection.close()  
     print("...Conexión Finalizada...")  
+    
+    
+# src/conexion_postgresql.py
+import psycopg2
+
+def obtener_conexion():
+    return psycopg2.connect(
+        host='localhost',
+        user='postgres',
+        password='1234',
+        database='VendeFacil'
+    )    
